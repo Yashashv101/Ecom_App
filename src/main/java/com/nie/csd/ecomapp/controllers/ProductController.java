@@ -1,7 +1,9 @@
 package com.nie.csd.ecomapp.controllers;
 
+import com.nie.csd.ecomapp.exception.IdNotPresentException;
 import com.nie.csd.ecomapp.models.Products;
 import com.nie.csd.ecomapp.services.ProductService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,28 +18,32 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public String products() {
-        return "Product list";
+    public ResponseEntity<List<Products>> getAllProducts() {
+        List<Products> productList = productService.getAllProducts();
+        return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
 
-    @GetMapping("/getAllProducts")
-    public List<Products> getAllProducts(){
-        return productService.getAllProducts();
-    }
 
     @GetMapping("/products/{id}")
-    public Optional<Products> getProductById(@PathVariable("id") Integer id){
-        return productService.getProductById(id);
+    public ResponseEntity<Optional<Products>> getByProductId(@PathVariable("id") Integer id) throws IdNotPresentException {
+        Optional<Products> product = productService.getProductById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(product);
+        //.orElseThrow(() -> new RuntimeException("Product not found with id " + id));
     }
+
 
     @PostMapping("/products")
     public Products addProduct(@RequestBody Products product){
-        return productService.addProduct(product);
+        Products newProduct = productService.addProduct(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newProduct).getBody();
+
     }
 
     @PutMapping("/products/{id}")
     public Products updateProduct(@PathVariable("id") Integer id, @RequestBody Products product){
-        return productService.updateProduct(id, product);
+        Products updatedProduct = productService.updateProduct(id, product); // Placeholder return statement
+        return ResponseEntity.status(HttpStatus.OK).body(updatedProduct).getBody();
+
     }
 
     @DeleteMapping("products/{id}")

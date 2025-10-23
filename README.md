@@ -92,15 +92,9 @@ We welcome contributions! Please see our [Contributing Guidelines](docs/CONTRIBU
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## Support
 
-- 📚 [Documentation](docs/README.md)
-- 💬 [Discord Community](https://discord.gg/ecomapp)
-- 🐛 [Issue Tracker](https://github.com/yourusername/EcomApp/issues)
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 

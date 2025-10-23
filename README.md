@@ -1,122 +1,108 @@
-# NIE_CSD_TEAM7
-SDP September 2025 Ecommerce website collaborator
+# EcomApp
 
-stuff that was told to be added:
-```txt
-DATABASE:
+A modern e-commerce application built with React, Node.js, and MongoDB.
 
-1. Members (id, name, balance, phone)
+## Overview
 
-2. Recharges (id, name(FK), price, description)
+EcomApp is a full-featured e-commerce platform that provides a seamless shopping experience for both customers and administrators. Built with modern technologies, it offers a responsive interface, secure payment processing, and comprehensive inventory management.
 
-3\. Games(id, name, price, description)
-Extras => duration, status(active/inactive), min\_player\_count, max\_player\_count, player\_count\_multiple
+## Features
 
-4 Transactions (id, member\_id(FK), game\_id(FK), amount, date)
+- 🛍️ User-friendly product browsing and search
+- 🛒 Shopping cart functionality
+- 💳 Secure payment processing
+- 👤 User authentication and profiles
+- 📦 Order management and tracking
+- 📊 Admin dashboard for inventory management
 
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- MongoDB
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/EcomApp.git
+cd EcomApp
 ```
 
-## The collections:
+2. Install dependencies:
 
-1. members
-    ```bash
-    db.createCollection("members", {
-        validator: {
-            $jsonSchema: {
-            bsonType: "object",
-            required: ["name", "phone"],
-            properties: {
-                name: { bsonType: "string" },
-                balance: { bsonType: "double" },
-                phone: { bsonType: "string" }
-            }
-            }
-        }
-    });
-    ```
-2. games
-    ```bash
-        db.createCollection("games", {
-        validator: {
-            $jsonSchema: {
-            bsonType: "object",
-            required: ["name", "price", "duration", "status", "min_player_count", "max_player_count", "player_count_multiple"],
-            properties: {
-                name: { bsonType: "string" },
-                price: { bsonType: "double" },
-                description: { bsonType: "string" },
-                
-                duration: { bsonType: "int" },  // or "double" if fractional allowed
-                status: { enum: ["active", "inactive"] }, // restrict to these values
-                min_player_count: { bsonType: "int" },
-                max_player_count: { bsonType: "int" },
-                player_count_multiple: { bsonType: "int" }
-                }
-            }
-            }
-        });
-    ```
+```bash
+# Install backend dependencies
+cd backend
+npm install
 
-3. recharges
-    ```bash 
-    db.createCollection("recharges", {
-        validator: {
-            $jsonSchema: {
-            bsonType: "object",
-            required: ["memberId", "amount"],
-            properties: {
-                memberId: { bsonType: "objectId" },
-                amount: { bsonType: "double" },
-                dateTime: { bsonType: "date" }
-            }
-            }
-        }
-    });
-    ```
-4. transactions
-    ```bash
-    db.createCollection("transactions", {
-        validator: {
-            $jsonSchema: {
-            bsonType: "object",
-            required: ["memberId", "gameId", "amount"],
-            properties: {
-                memberId: { bsonType: "objectId" },
-                gameId: { bsonType: "objectId" },
-                amount: { bsonType: "double" },
-                dateTime: { bsonType: "date" }
-            }
-            }
-        }
-    });
-    ```
-5. collections
-    ```bash
-    db.createCollection("collections", {
-        validator: {
-            $jsonSchema: {
-            bsonType: "object",
-            required: ["date", "amount"],
-            properties: {
-                date: { bsonType: "date" },
-                amount: { bsonType: "double" }
-            }
-            }
-        }
-    });
-    ```
-6. admin_users
-    ```bash
-    db.createCollection("admin_users", {
-        validator: {
-            $jsonSchema: {
-            bsonType: "object",
-            required: ["username", "password"],
-            properties: {
-                username: { bsonType: "string" },
-                password: { bsonType: "string" }
-            }
-            }
-        }
-    });
-    ```
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
+
+3. Configure environment variables:
+
+```bash
+# In backend directory
+cp .env.example .env
+# Edit .env with your configurations
+```
+
+4. Start the application:
+
+```bash
+# Start backend server
+cd backend
+npm run dev
+
+# Start frontend in a new terminal
+cd frontend
+npm start
+```
+
+The application will be available at `http://localhost:3000`
+
+## Project Structure
+
+```
+EcomApp/
+├── backend/         # Node.js/Express server
+├── frontend/        # React application
+├── docs/           # Documentation
+└── tests/          # Test suites
+```
+
+## API Documentation
+
+API documentation is available at `/api/docs` when running the development server.
+
+## Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](docs/CONTRIBUTING.md) for details.
+
+### Development Setup
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## Support
+
+- 📚 [Documentation](docs/README.md)
+- 💬 [Discord Community](https://discord.gg/ecomapp)
+- 🐛 [Issue Tracker](https://github.com/yourusername/EcomApp/issues)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Thanks to all contributors who have helped shape EcomApp
+- Built with [React](https://reactjs.org/), [Node.js](https://nodejs.org/), and [MongoDB](https://www.mongodb.com/)

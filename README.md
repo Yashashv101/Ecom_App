@@ -1,5 +1,4 @@
-# NIE_CSD_TEAM7
-SDP September 2025 Ecommerce website collaborator
+# ECOM APP
 
 stuff that was told to be added:
 ```txt

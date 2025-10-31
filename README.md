@@ -1,102 +1,70 @@
-# EcomApp
+# 🎮 Gaming Club App
 
-A modern e-commerce application built with React, Node.js, and MongoDB.
+A **Membership and Game Management System** built using **Spring Boot** and **React** with **MongoDB** for managing gaming center operations such as memberships, games, recharges, transactions, and daily collections.
 
-## Overview
+---
 
-EcomApp is a full-featured e-commerce platform that provides a seamless shopping experience for both customers and administrators. Built with modern technologies, it offers a responsive interface, secure payment processing, and comprehensive inventory management.
+## 🚀 Overview
 
-## Features
+The **Gaming Club App** provides a digital platform for managing all core operations of a gaming center. It allows administrators to:
+- Register members and track their balances
+- Add and manage games
+- Record game plays and recharges
+- Monitor daily collections
+- Securely authenticate admin users
 
-- 🛍️ User-friendly product browsing and search
-- 🛒 Shopping cart functionality
-- 💳 Secure payment processing
-- 👤 User authentication and profiles
-- 📦 Order management and tracking
-- 📊 Admin dashboard for inventory management
+This system eliminates manual tracking, improves accuracy, and provides an efficient and scalable solution for gaming center management.
 
-## Getting Started
+---
 
-### Prerequisites
+## 🧱 Tech Stack
 
-- Node.js (v14 or higher)
-- MongoDB
-- npm or yarn
+| Layer | Technology |
+|-------|-------------|
+| **Frontend** | React.js, Axios, Bootstrap/CSS |
+| **Backend** | Spring Boot (REST APIs) |
+| **Database** | MongoDB (Atlas or Local) |
+| **Authentication** | JWT (dummy token currently implemented) |
 
-### Installation
+---
 
-1. Clone the repository:
+## 🗃️ MongoDB Collections Overview
 
-```bash
-git clone https://github.com/yourusername/EcomApp.git
-cd EcomApp
-```
+| Collection | Description |
+|-------------|-------------|
+| **members** | Stores member details and balance |
+| **games** | Stores all available games and their prices |
+| **recharges** | Records recharge transactions per member |
+| **transactions** | Records each game play and amount deducted |
+| **collections** | Tracks daily collection totals |
+| **admin_users** | Stores admin credentials |
 
-2. Install dependencies:
+## 🧩 Key Features
 
-```bash
-# Install backend dependencies
-cd backend
-npm install
+- **Admin Login**  
+  Secure authentication (dummy JWT token).
+- **Membership Management**  
+  Create new members with an initial joining fee.
+- **Game Management**  
+  Add, edit, and list games with descriptions and prices.
+- **Recharge System**  
+  Recharge member balances.
+- **Game Play Tracking**  
+  Deducts balance automatically when a game is played.
+- **Collections Page**  
+  Displays total daily collections.
+- **Detailed Member History**  
+  Shows recharge and game play history per member.
 
-# Install frontend dependencies
-cd ../frontend
-npm install
-```
+---
 
-3. Configure environment variables:
+## 🔌 API Endpoints
 
-```bash
-# In backend directory
-cp .env.example .env
-# Edit .env with your configurations
-```
-
-4. Start the application:
-
-```bash
-# Start backend server
-cd backend
-npm run dev
-
-# Start frontend in a new terminal
-cd frontend
-npm start
-```
-
-The application will be available at `http://localhost:3000`
-
-## Project Structure
-
-```
-EcomApp/
-├── backend/         # Node.js/Express server
-├── frontend/        # React application
-├── docs/           # Documentation
-└── tests/          # Test suites
-```
-
-## API Documentation
-
-API documentation is available at `/api/docs` when running the development server.
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](docs/CONTRIBUTING.md) for details.
-
-### Development Setup
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-
-
-## Acknowledgments
-
-- Thanks to all contributors who have helped shape EcomApp
-- Built with [React](https://reactjs.org/), [Node.js](https://nodejs.org/), and [MongoDB](https://www.mongodb.com/)
+| Method | Endpoint | Description |
+|--------|-----------|-------------|
+| **POST** | `/auth` | Admin login (returns dummy JWT token) |
+| **POST** | `/members` | Create new membership |
+| **POST** | `/members/search` | Search member by phone |
+| **POST** | `/game` | Add new game |
+| **POST** | `/play` | Play a game (deducts balance) |
+| **GET** | `/collection/{date}` | Fetch daily collection by date |
